@@ -34,6 +34,7 @@ const ProductOrder = () => {
       try {
         let result = await request.request('/api/productorder?sort=createdAt DESC', '', 'GET')
         setProductOrderAll(result.data)
+        
       } catch (error) {
         console.log(error)
       }
@@ -41,7 +42,9 @@ const ProductOrder = () => {
     fetchData()
   }, [isUpdate])
   useEffect(() => {
+    console.log(productOrderAll)
     let p = productOrderAll.filter(e => e.status === productOrderType)
+    
     setProductOrder(p)
   }, [productOrderType, productOrderAll])
 
